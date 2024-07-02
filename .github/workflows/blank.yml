@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     env:
-      platform: aws
+      platform: azure
       region: us-east
       account: 0987654321
     # The type of runner that the job will run on
@@ -37,3 +37,7 @@ jobs:
         if: ${{env.platform != 'azure'}}
         run: |
           echo "Plataforma inválida"
+
+      - name: "Mostrando variables por defecto"
+        run: |
+          echo "Evento: ${{toJSON(github.event)}}"
