@@ -19,6 +19,8 @@ jobs:
       platform: azure
       region: us-east
       account: 0987654321
+      username: ${{secrets.USERNAME}}
+      password: ${{secrets.PASSWORD}}
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -33,6 +35,8 @@ jobs:
           echo "Valor Platform: ${{env.platform}}"
           echo "Valor Region: ${{env.region}}"
           echo "Valor Account: ${{env.account}}"
+          echo "Valor Username: ${{env.username}}"
+          echo "Valor Password: ${{env.password}}"
       - name: "Mostrando variables de entorno"
         if: ${{env.platform != 'azure'}}
         run: |
