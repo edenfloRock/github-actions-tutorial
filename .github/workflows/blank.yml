@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     env:
-      platform: azure
+      platform: aws
       region: us-east
       account: 0987654321
     # The type of runner that the job will run on
@@ -28,7 +28,12 @@ jobs:
         run: echo "¡Hola mundo!"
 
       - name: "Mostrando variables de entorno"
+        if: ${{env.platform == 'azure'}}
         run: |
-          echo "Platform: ${{env.platform}}"
-          echo "region: ${{env.region}}"
-          echo "account: ${{env.account}}"
+          echo "Valor Platform: ${{env.platform}}"
+          echo "Valor Region: ${{env.region}}"
+          echo "Valor Account: ${{env.account}}"
+      - name: "Mostrando variables de entorno"
+        if: ${{env.platform != 'azure'}}
+        run: |
+          echo "Plataforma inválida"
